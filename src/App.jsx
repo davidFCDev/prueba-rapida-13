@@ -45,7 +45,7 @@ function App() {
       </header>
 
       <main>
-        <Movies movies={movies} />
+        <main>{loading ? <p>Loading...</p> : <Movies movies={movies} />}</main>
       </main>
     </div>
   );
