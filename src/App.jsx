@@ -1,10 +1,17 @@
+import { useState } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies";
 import { useSearch } from "./hooks/useSearch";
+import { useMovies } from "./hooks/useMovies";
 
 function App() {
+  const [sort, setSort] = useState(false);
+  const { movies, getMovies, loading, error } = useMovies({
+    search,
+    sort,
+  });
   const { search, updateSearch } = useSearch();
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(search);
