@@ -14,7 +14,7 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(search);
+    getMovies({ search });
   };
 
   const handleChange = (event) => {
@@ -41,6 +41,7 @@ function App() {
           <input type="checkbox" checked={sort} onChange={handleSort} />
           <button>Search</button>
         </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </header>
 
       <main>
