@@ -6,11 +6,11 @@ import { useMovies } from "./hooks/useMovies";
 
 function App() {
   const [sort, setSort] = useState(false);
+  const { search, updateSearch } = useSearch();
   const { movies, getMovies, loading, error } = useMovies({
     search,
     sort,
   });
-  const { search, updateSearch } = useSearch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,6 +20,10 @@ function App() {
   const handleChange = (event) => {
     const newSearch = event.target.value;
     updateSearch(newSearch);
+  };
+
+  const handleSort = () => {
+    setSort(!sort);
   };
 
   return (
@@ -34,6 +38,7 @@ function App() {
             type="text"
             placeholder="Avengers, matrix..."
           />
+          <input type="checkbox" checked={sort} onChange={handleSort} />
           <button>Search</button>
         </form>
       </header>
